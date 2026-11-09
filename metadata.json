@@ -1,0 +1,6 @@
+{
+  "name": "Africa Web - Agence Numérique",
+  "description": "Plateforme vitrine et portfolio de l'agence numérique Africa Web : création de sites internet, e-commerce, marketplaces et plateformes webinaires.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,11 @@
+# Netlify headers configuration for Africa Web
+/videos/*
+  Content-Type: video/mp4
+  Accept-Ranges: bytes
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff

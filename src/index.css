@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-brand-blue: #073587;
+  --color-brand-blue-dark: #05235c;
+  --color-brand-gold: #f59e0b;
+}
+
+:root {
+  --font-body: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-body: 18px;
+  --font-weight-body: 700;
+  --font-title: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-title: 36px;
+  --font-weight-title: 900;
+  --font-subtitle: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-subtitle: 16px;
+  --font-weight-subtitle: 600;
+  --font-price: Arial, Helvetica, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-price: 32px;
+  --font-weight-price: 900;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body, Arial, Helvetica, sans-serif);
+  font-size: var(--font-size-body, 18px);
+  font-weight: var(--font-weight-body, 700);
+  scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body, Arial, Helvetica, sans-serif);
+  font-size: var(--font-size-body, 18px);
+  font-weight: var(--font-weight-body, 700);
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  min-height: 100vh;
+}
+
+/* Ensure all media stays strictly contained on Android & mobile screens */
+img, video, canvas, svg, iframe {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* Ensure all buttons, forms and components use Arial Bold 18px base */
+button, a, input, select, textarea {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+/* Explicit price typography classes for high visibility Arial bold */
+.price-tag, .price-display, .price-value {
+  font-family: var(--font-price, Arial, Helvetica, sans-serif) !important;
+  font-weight: var(--font-weight-price, 900) !important;
+}
