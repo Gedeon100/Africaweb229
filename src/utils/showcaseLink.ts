@@ -196,7 +196,9 @@ export function buildShowcasePayload(data: {
       subtitle: data.videoPresentation.subtitle,
       // If the video is a local blob, we don't serialize blob url across computers,
       // but if it's a bundled path like /assets/aistudio/... or a web URL, it serializes perfectly!
-      videoUrl: data.videoPresentation.videoUrl?.startsWith('blob:')
+      videoUrl: !data.videoPresentation.videoUrl ||
+      data.videoPresentation.videoUrl.startsWith('blob:') ||
+      data.videoPresentation.videoUrl.startsWith('indexeddb:')
         ? '/assets/aistudio/AfricaWeb_22ef340a.mp4'
         : data.videoPresentation.videoUrl,
       duration: data.videoPresentation.duration,

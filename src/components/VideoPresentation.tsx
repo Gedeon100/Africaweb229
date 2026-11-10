@@ -364,7 +364,11 @@ export const VideoPresentation: React.FC<VideoPresentationProps> = ({
               <>
                 <video
                   ref={videoRef}
-                  src={videoInfo.streamUrl}
+                  src={
+                    videoInfo.streamUrl.startsWith('indexeddb:')
+                      ? '/assets/aistudio/AfricaWeb_22ef340a.mp4'
+                      : videoInfo.streamUrl
+                  }
                   className="w-full h-full object-contain cursor-pointer"
                   playsInline
                   // @ts-ignore
@@ -391,16 +395,14 @@ export const VideoPresentation: React.FC<VideoPresentationProps> = ({
                     setHasError(false);
                   }}
                   onEnded={() => setIsPlaying(false)}
-                  onError={(e) => {
-                    console.error('HTML5 Video Error:', e);
-                    // If current video URL fails (e.g. broken external link or device-specific blob),
-                    // instantly fall back to the bundled local presentation video
+                  onError={() => {
+                    // Gracefully fallback to bundled presentation video if streamUrl fails
+                    const currentSrc = videoInfo.streamUrl;
                     if (
-                      videoInfo.streamUrl &&
-                      videoInfo.streamUrl !== '/assets/aistudio/AfricaWeb_22ef340a.mp4' &&
-                      videoInfo.streamUrl !== '/videos/africaweb-presentation.mp4'
+                      currentSrc &&
+                      currentSrc !== '/assets/aistudio/AfricaWeb_22ef340a.mp4' &&
+                      currentSrc !== '/videos/africaweb-presentation.mp4'
                     ) {
-                      console.warn('Switching to bundled video /assets/aistudio/AfricaWeb_22ef340a.mp4');
                       updateVideoPresentation({ videoUrl: '/assets/aistudio/AfricaWeb_22ef340a.mp4' });
                       setHasError(false);
                       return;

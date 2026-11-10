@@ -378,6 +378,8 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         const parsed = JSON.parse(saved);
         if (
           !parsed.videoUrl ||
+          parsed.videoUrl.startsWith('indexeddb:') ||
+          parsed.videoUrl.startsWith('blob:') ||
           parsed.videoUrl.includes('BigBuckBunny.mp4') ||
           parsed.videoUrl.includes('commondatastorage.googleapis.com') ||
           parsed.videoUrl === '/videos/africaweb-presentation.mp4'

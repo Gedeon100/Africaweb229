@@ -94,14 +94,25 @@ export function parseUniversalVideoUrl(url: string | undefined | null): ParsedVi
   }
 
   // 6. Default HTML5 direct video (Local bundled MP4, external CDN MP4, WebM, blob)
+  if (clean.startsWith('indexeddb:')) {
+    return {
+      platform: 'html5',
+      streamUrl: '/assets/aistudio/AfricaWeb_22ef340a.mp4',
+      isIframe: false,
+      label: 'Vidéo Officielle Africa Web'
+    };
+  }
+
   return {
     platform: 'html5',
     streamUrl: clean,
     isIframe: false,
     label: clean.startsWith('blob:')
-      ? 'Fichier local importé (IndexedDB)'
+      ? 'Fichier local importé'
+      : clean.startsWith('/assets/aistudio/')
+      ? 'Vidéo Officielle Africa Web'
       : clean.startsWith('/videos/')
-      ? 'Vidéo officielle du site (Hébergée sur Netlify)'
+      ? 'Vidéo officielle du site'
       : 'Fichier direct MP4/WebM'
   };
 }
